@@ -31,7 +31,8 @@ int main(){
         }
     }
     
-    *v2 = strcat("je " ,v1);
+    strcat(v2,"je ");
+    strcat(v2,v1);
     puts(v2);
     
 }
