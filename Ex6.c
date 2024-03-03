@@ -6,12 +6,16 @@ int main(){
     char *v ,*v1,*v2 ;
     v2 = (char *) malloc (30*sizeof(char));
     v = (char *) malloc (24*sizeof(char));
-    v1 = (char *) malloc(22*sizeof(char));
+    
     if (v==NULL || v1==NULL || v2==NULL){
         puts("pas de memoire !!");
     }
     puts("entrez le verbe :");
     gets(v);
+    v1 = (char *) malloc((strlen(v)-3)*sizeof(char));
+        if (v1==NULL){
+        puts("pas de memoire !!");
+    }
     int a = 0;
     if(strlen(v)<4){
         puts("pas un verbe !!");
@@ -30,9 +34,10 @@ int main(){
             }
         }
     }
-    
+    v2[0]='\0';
     strcat(v2,"je ");
     strcat(v2,v1);
+    strcat(v2,"e");
     puts(v2);
     
 }
