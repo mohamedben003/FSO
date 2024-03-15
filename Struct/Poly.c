@@ -90,9 +90,12 @@ int main(){
     ListePolynome *L = (ListePolynome *)malloc (sizeof(ListePolynome));
     initaliser_list(L);
     monome *nv = (monome *)malloc(sizeof(monome));
-    nv->coefficient = 3;
-    nv->puissance = 4 ;
-    insert_element(L ,nv,1);
+    for(int i=0 ; i<3 ; i++){
+        printf("enter le monome : ");
+        scanf("%d %d",nv->coefficient,nv->puissance);
+        insert_element(L ,nv,i);
+    }
+    
     afficher_List(L);
 }
 

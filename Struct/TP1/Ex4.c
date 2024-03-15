@@ -148,11 +148,12 @@ void modifieEtudiant(Etudiant *E){
 //-------------- 6:
 int main(){
     int n;
-    Etudiant E;
+    Etudiant *E;
+
     puts("enter le nbr des etudiants :");
     scanf("%d",&n);
-    creerTableauEtudiant(&E,n);
+    creerTableauEtudiant(E,n);
+    afficheTableauEtudiants(E,n);
+    // modifieEtudiant(&E);
     // afficheTableauEtudiants(&E,n);
-    modifieEtudiant(&E);
-    afficheTableauEtudiants(&E,n);
 }

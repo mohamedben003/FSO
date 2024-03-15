@@ -9,7 +9,8 @@ int main(){
     printf("P = ");
     scanf("%d", &P);
 
-    int **A =(int **) malloc(N* sizeof(int*));
+    int **A;
+    A =(int **) malloc(N* sizeof(int*));
     if (A==NULL){
         printf("on a pas de memoire ");
         exit (0);
