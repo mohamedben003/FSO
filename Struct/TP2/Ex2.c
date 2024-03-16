@@ -84,6 +84,20 @@ void delete_k_em(Liste *L , int k){
     }
 }
 
+void delete_with_year(Liste *L ,int year){
+    Livre *courant = L->debut;
+    i=1;
+    while(courant!=NULL){
+        if(courant->annee == year){
+            delete_k_em(L , i);
+            break;
+        }else{
+            courant = courant->suivant;
+            i++;
+        }
+    }
+}
+
 void afficher_Liste(Liste *L){
     Livre *courant = L->debut;
     while (courant != NULL)
@@ -92,6 +106,17 @@ void afficher_Liste(Liste *L){
         courant = courant->suivant;
     }
     
+}
+
+void destroy_Liste(Liste *L){
+    Livre *courant = L->debut;
+    while(courant != NULL){
+        Livre *temp = courant;
+        delete_first(L);
+        temp = NULL;
+        free(temp);
+        courant = courant->suivant;
+    }
 }
 int main(){
     Liste *L = (Liste *)malloc(sizeof(Liste));
@@ -125,7 +150,12 @@ int main(){
     afficher_Liste(L);
     delete_first(L);
     delete_k_em(L , 1);
+    delete_with_year(L , 1766);
     puts("-----------------");
     afficher_Liste(L);
+    destroy_Liste(L);
+    puts("------------------");
+    afficher_Liste(L);
+    puts("fin ...");
 
 }
