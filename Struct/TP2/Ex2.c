@@ -90,11 +90,9 @@ void delete_with_year(Liste *L ,int year){
     while(courant!=NULL){
         if(courant->annee == year){
             delete_k_em(L , i);
-            break;
-        }else{
-            courant = courant->suivant;
-            i++;
         }
+        courant = courant->suivant;
+        i++;
     }
 }
 
@@ -125,31 +123,31 @@ int main(){
         puts("pas de memoire !!");
     }
     intialiser_Liste(L);
-    strcpy(nv->nom_aut,"benjeloun ahmed");
+    strcpy(nv->nom_aut,"1er auteur ");
     strcpy(nv->titre,"GOT");
     nv->annee = 1999;
     first_elem(L , nv);
 
     Livre *nv1 =(Livre *)malloc(sizeof(Livre));
-    strcpy(nv1->nom_aut,"david bendivos");
-    strcpy(nv1->titre,"brezking bad");
+    strcpy(nv1->nom_aut,"2eme auteur ");
+    strcpy(nv1->titre,"brezki");
     nv1->annee = 1877;
     debut_Liste(L , nv1);
 
     Livre *nv2 =(Livre *)malloc(sizeof(Livre));
-    strcpy(nv2->nom_aut,"kim son doo");
-    strcpy(nv2->titre,"solo level");
+    strcpy(nv2->nom_aut,"3eme auteur ");
+    strcpy(nv2->titre,"solo");
     nv2->annee = 1766;
     fin_Liste(L , nv2);
 
     Livre *nv3 =(Livre *)malloc(sizeof(Livre));
-    strcpy(nv3->nom_aut,"dadivos sivecsff");
+    strcpy(nv3->nom_aut,"4eme auteur ");
     strcpy(nv3->titre,"brezd");
-    nv3->annee = 1666;
+    nv3->annee = 1766;
     k_em_pos(L , nv3 , 2);
     afficher_Liste(L);
-    delete_first(L);
-    delete_k_em(L , 1);
+    // delete_first(L);
+    // delete_k_em(L , 1);
     delete_with_year(L , 1766);
     puts("-----------------");
     afficher_Liste(L);
