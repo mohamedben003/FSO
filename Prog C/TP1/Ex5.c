@@ -4,52 +4,45 @@
 
 int main()
 {
-    int N = 200 , M, P , i , j ;
-    printf("M = ");
-    scanf("%d",&M);
-    printf("P = ");
-    scanf("%d",&P);
-    getchar();
-    char **A = (char **) malloc(M * sizeof(char*));
-    char **B = (char **) malloc(P * sizeof(char*));
-    char **FUS = (char **) malloc((M+P) * sizeof(char*));
+    int i , j;
+    char **A = (char **) malloc(5*sizeof(char*));
+    char **B = (char **) malloc(5*sizeof(char*));
+    char **FUS = (char **) malloc(10*sizeof(char*));
     if(A == NULL || B== NULL || FUS == NULL){
         printf("pas de mémoire !!");
         exit(1);
     }
-    for (i=0 ; i<M ; i++){
-        *(A+i) = (char *) malloc(N * sizeof(char));
+    for(i=0 ; i<5 ; i++){
+        *(A+i) = (char *)malloc(20*sizeof(char));
     }
-    for (i=0 ; i<P ; i++){
-        *(B+i) = (char *) malloc(N * sizeof(char));
+    for(i=0 ; i<5 ; i++){
+        *(B+i) = (char *)malloc(20*sizeof(char));
     }
-    for (i=0 ; i<M+P ; i++){
-        *(FUS+i) = (char *) malloc((N+N) * sizeof(char));
+    printf("enter les donnee de A : \n");
+    for(i=0 ; i<5 ; i++){
+        scanf("%s",*(A+i));
     }
-    printf("les donnee de A : \n");
-    for(i=0; i<M ;i++){
-        gets(*(A+i));
+    printf("enter les donnee de B : \n");
+    for(i=0 ; i<5 ; i++){
+        scanf("%s",*(B+i));
     }
-            for(i=0 ; i<(M) ; i++){
-        printf("%s \t",*(A+i));
-    }
-    printf("\n");
-    printf("les donnee de B : \n");
-    for(i=0 ; i<P ; i++){
-        gets(*(B+i));
-    }
-            for(i=0 ; i<(P) ; i++){
-        printf("%s \t",*(B+i));
-    }
-    printf("\n");
-    for(i=0 ; i<(M) ; i++){
+    printf("le tableau FUS : \n");
+    for(i=0 ; i<5 ; i++){
         *(FUS+i) = *(A+i);
+        *(FUS+i+5) = *(B+i);
     }
-    for(i=0 ; i<(P) ; i++){
-        *(FUS+i+M) = *(B+i);
+    //tri : 
+    char *temp;
+    for(i=0 ; i<9 ; i++){
+        for(j=i+1 ; j<10 ; j++){
+            if(strcmp(*(FUS+i),*(FUS+j)) > 0  ){
+                strcpy(temp , *(FUS+i));
+                strcpy(*(FUS+i), *(FUS+j));
+                strcpy(*(FUS+j), temp);
+            }
+        }
     }
-    printf("le resultat : \n");    
-    for(i=0 ; i<(M+P) ; i++){
-        printf("%s \t",*(FUS+i));
+    for(i=0 ; i<10 ; i++){
+        printf("%s\t",*(FUS+i));
     }
 }
